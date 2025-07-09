@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import mqtt from 'mqtt';
 
-const mqttUrl = 'wss://broker.hivemq.com:8884/mqtt'; // MQTT over WebSocket
+// const mqttUrl = 'wss://broker.hivemq.com:8884/mqtt'; // MQTT over WebSocket
+const mqttUrl = 'ws://10.12.0.11:9001';
 const topic = 'mqtt_chat_app/public';
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
 
   const sendMessage = () => {
     if (!msgInput.trim()) return;
-    fetch('http://localhost:3022/send', {
+    fetch('http://10.12.0.11:3022/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ user: username, message: msgInput, time: new Date().toLocaleTimeString() }),
